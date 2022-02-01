@@ -1,0 +1,16 @@
+{
+    "extends": "../../tsconfig.json",
+
+    "compilerOptions": {
+
+        "baseUrl": "./src",
+        "outDir": "./lib",
+        "rootDir": "./src",
+        "lib": ["dom"],
+        "jsx": "preserve",
+    },
+
+    "include": ["src/**/*.ts", "src/**/*.tsx"],
+
+    "exclude": ["src/**/_*.ts", "src/**/_*.tsx"]
+}

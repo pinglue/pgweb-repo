@@ -1,0 +1,82 @@
+
+id: server-pl
+
+settings:
+
+  type: object
+
+  properties:
+
+    env:
+      type: string
+      default: local
+
+    profiles:
+      type: string
+      default: dev
+
+    staticRoute:
+      type: string
+      default: static
+
+    apiRoute:
+      type: string
+      default: api
+
+    checkFrontend:
+      type: boolean
+      default: false  
+
+    watchFrontend:
+      type: boolean
+      default: true
+
+    buildFrontend:
+      type: boolean
+      default: true
+
+    watchBacktend:
+      type: boolean
+      default: true
+  
+    port:
+      type: number
+      default: 4000
+
+    uploadDir:
+      type: string
+      default: tmp-uploads
+
+    pgPath:
+      type: string
+      default: src/pg
+
+    silent:
+      type: boolean
+      default: false
+  
+    frontendLogger:
+      type: string
+      default: "default-pg-print"
+    
+    backendLogger:
+      type: string
+      default: "default-pg-print"
+
+    # milliseconds
+    fakeApiDelay:
+      type: number
+
+
+    # where to server the frontend from
+    frontend:
+      type: object
+      properties:
+        filePath:
+          type: string          
+        url:
+          type: string          
+        port:
+          type: number
+          
+          

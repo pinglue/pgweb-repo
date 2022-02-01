@@ -1,0 +1,55 @@
+
+"get-form":
+#=========================
+
+  description: "Returns the last submitted data for a form if it's available"
+
+  settings:
+    singleHandler: true
+
+  params:
+    id: 
+      type: string
+      description: "Form id"
+
+  return:
+    type: object
+
+
+"submit-form":
+#==========================
+
+  descriptions:
+
+  settings:
+    singleHandler: true
+
+  params:
+    id: string
+    data: object
+
+
+"should-submit-form":
+#============================
+
+  settings:
+    runMode: chain-breakable
+
+  params:
+    id: string
+    data: object
+
+  return:
+    shouldSubmit: boolean
+    isSpam: boolean!
+    detail: object
+
+"form-submit-spam":
+#===============================
+
+  settings:
+    runMode: "no-value"
+
+  params:
+    id: string
+    data: object

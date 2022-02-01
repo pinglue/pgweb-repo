@@ -1,0 +1,45 @@
+{
+  "name": "@pgweb/server-pl",
+  "version": "0.0.0",
+  "exports": {
+    "./server": "./lib/server.js"
+  },
+  "type": "module",
+  "files": [
+    "lib",
+    "channel",
+    "pg.yaml"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "watch": "./node_modules/.bin/tsc -w",
+    "build-ts": "./node_modules/.bin/tsc -b",
+    "clean-extras": "rm *.log",
+    "clean-ts": "rm -rf lib; rm tsconfig.tsbuildinfo",    
+    "clean-node": "rm -rf node_modules",
+    "clean-all": "npm run clean-extras; npm run clean-ts; npm run clean-node",
+    "lint": "./node_modules/.bin/eslint 'src/**/*.ts'",
+    "test": "node --experimental-vm-modules ./node_modules/.bin/jest"
+  },
+  "dependencies": {
+    "@pgweb/utils": "^0.0.0",
+    "@pinglue/print": "^0.0.0",
+    "@pinglue/utils": "^0.0.0",    
+    "express": "^4.17.1",
+    "formidable": "^1.2.2",
+    "fs-extra": "^10.0.0",
+    "http-proxy-middleware": "^2.0.1",
+    "pinglue": "^0.0.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.28.5",
+    "@typescript-eslint/parser": "^4.28.5",
+    "eslint": "^7.31.0",
+    "jest": "^27.0.6",
+    "typedoc": "^0.21.4",
+    "typescript": "4.3.5",
+    "@types/formidable": "^2.0.3"
+  }
+}

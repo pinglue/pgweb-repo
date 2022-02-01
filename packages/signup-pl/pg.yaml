@@ -1,0 +1,14 @@
+id: signup-pl
+
+settings:
+
+  type: object
+
+  properties:
+    pwdHashingType:
+      type: string
+      default: raw
+
+    verificationRequire:
+      type: boolean
+      default: true

@@ -1,0 +1,82 @@
+
+id: verification-pl
+
+settings:
+  
+  type: object
+
+  properties:
+
+    email:
+
+      type: object
+
+      properties:
+
+        contentType: # text | html
+          type: string
+          default: text
+
+        # subject line template, eitehr a text or a path to the file (path will be appended with locale if it exists)
+        subjectTemplate:        
+          type: object
+          properties:
+            text:
+              type: string
+              default: "Your verification code"
+            path:
+              type: string
+
+        # refering to notification-pl's settings.template - the template should have a placeholder variables for "code", "ttv"
+        template:
+          type: object
+          properties:
+            type: 
+              type: string
+              default: hb
+            text:
+              type: string
+              default: "Dear user, Your verification code is {{code}}. You have {{ttv}} minutes to enter the code. Thanks!"        
+            path:
+              type: string   
+          
+    
+    phone:
+
+      type: object
+
+      properties:
+        
+        # refering to notification-pl's settings.template - the template should have a placeholder variables for "code", "ttv"
+        template:
+          type: object
+          properties:
+            type: 
+              type: string
+              default: hb
+            text:
+              type: string
+              default: "Dear user, Your verification code is {{code}}. You have {{ttv}} minutes to enter the code. Thanks!"       
+            path:
+              type: string
+
+   
+    # max times to send the code
+    maxCodeSends:
+      type: number
+      default: 5
+
+    # how many times user can try entering the code
+    maxAttempts:
+      type: number
+      default: 3
+
+    ttv:
+      type: number
+      default: 15
+
+    ttl:
+      type: number
+      default: 120
+
+    

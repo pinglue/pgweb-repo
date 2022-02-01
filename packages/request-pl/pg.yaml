@@ -1,0 +1,24 @@
+
+id: request-pl
+
+settings:
+  
+  type: object
+
+  properties:
+
+    uploadDir:
+      type: string
+      default: tmp-uploads
+
+    # To be auto assigned (by server-pl) - not really for user to setup. The first terms of the route should not start with / or ./ Alos no trailing / allowed - example: "api" - "xx/api"
+    apiRoute:
+      type: string
+      default:
+
+    # the channels from the backend to come to the frontend - in addition to this field, the channel settings of each package can bring a backend channel to the frontend by setting the field "inFrontend" of the channel setting to true
+    remoteChannels:
+      type: array
+      items:
+        type: string  
+

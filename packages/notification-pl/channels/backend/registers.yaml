@@ -1,0 +1,17 @@
+
+"send-notification":
+#=====================================
+
+  description: "Run this channel to send a notification"
+
+  settings:
+    singleHandler: true
+    runMode: no-value
+
+  params:
+    ctx: RequestContext
+    notification: Notification
+    
+  return:
+    description: "whether the notification was sent successfully or not"
+    type: Message  

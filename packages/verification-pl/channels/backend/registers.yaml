@@ -1,0 +1,43 @@
+
+"verify-user":
+#==============================
+
+  settings:
+    singleHandler: true
+    inFrontend: true
+
+  return:
+    type: Message
+
+
+"validate-verification-code":
+#==============================
+
+  settings:
+    singleHandler: true
+    inFrontend: true
+
+  return:
+    type: Message
+
+
+"resend-verification-code":
+#==============================
+
+  settings:
+    singleHandler: true
+    inFrontend: true
+
+  return:
+    type: Message
+
+
+"is-user-verified":
+#==============================
+
+  settings:
+    singleHandler: true
+    inFrontend: true
+
+  return:
+    type: IsVerifiedResponse

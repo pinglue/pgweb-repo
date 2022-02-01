@@ -1,0 +1,27 @@
+
+id: locale-pl
+
+settings:
+  
+  type: object
+  
+  properties:
+
+    defaultLang:
+      type: string
+      default: en
+
+    defaultDomain:
+      type: string
+      default: msg
+
+    globalObjField:
+      type: string
+      default: dictionary
+
+    # will be assigned automatically at the build time based on available dictionaries
+    langs:
+      type: array
+
+    
+

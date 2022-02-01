@@ -1,0 +1,42 @@
+
+id: notification-pl
+
+settings:
+
+  type: object
+
+  properties:    
+
+    # dummy flag makes the plugin not to send any real message, but just logs out the notification params - good for dev  
+    isDummy:
+      type: boolean
+      default: false
+
+    email:
+
+      type: object
+
+      properties:
+
+        maxAttempts:
+          type: number
+          default: 10
+
+        fromAddress:
+          type: string                 
+          
+        smtpConfig:
+          type: object
+          properties:          
+            host:
+              type: string
+            port:
+              type: number
+            username:
+              type: string
+            password:
+              type: string
+            secure:
+              type: boolean
+              default: true
+

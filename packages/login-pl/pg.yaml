@@ -1,0 +1,12 @@
+
+id: login-pl
+
+settings:
+
+  type: object
+
+  properties:
+    pwdHashingType:
+      type: string
+      default: raw
+

@@ -1,0 +1,35 @@
+
+"get-user-info":
+#===============================
+
+  description: "TODO"
+
+  settings:
+    singleHandler: true
+    inFrontend: true
+
+  params:
+    ctx:
+    fields?: "string[]"
+
+  return:
+    type: Object
+
+
+"get-users-info":
+#===============================
+
+  description: "Needs security priviledge (mainly admin)"
+
+  settings:
+    singleHandler: true
+    inFrontend: true
+
+  params:
+    ctx:
+    fields?: "string[]"
+
+  return:
+    type: "Object[]"
+
+  

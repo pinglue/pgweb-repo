@@ -1,0 +1,148 @@
+
+"get-server-settings":
+#===========================
+
+  description: ""
+
+  settings:
+    singleHandler: true
+    syncType: sync
+
+  return:
+    type: Settings
+
+
+"before-server-starts":
+#=============================
+
+  description: "Initing stuff"
+  
+  settings:
+    runMode: no-value
+
+"on-request":
+#================================
+  description: "Runs right after a request comes. Before context is created. Good for general security checks. The only (public) channel that received the Express req,res directly"
+
+  settings:
+    runMode: no-value
+    noCloneParams: true
+
+  params:
+    req: IncomingMessage
+    res: ServerResponse
+
+
+"before-api-request":
+#t===============================
+  description: "This channel received the request info object as the value and handlers can alter it and these changes will be saved in the ctx object - Place for extra headers, backend hub watcher, extra security checks, etc. - Right after this channel the request will be handed down to the api hub, to prevent this set the value isSent field to true"
+
+  settings:
+    
+
+  params: 
+
+  value:
+    type: RequestInfo
+
+"before-frontend-request":
+#================================
+
+  description: "This channel received the request info object as the value and handlers can alter it and these changes will be saved in the ctx object - Place for extra headers, frontend hub watcher, extra security checks, etc. - Right after this channel the request will be handed down to the frontend sct to process - to prevent this set the value isSent field to true - Note: this channel is not run for static frontend requests"
+  
+  settings:
+
+  params: 
+
+  value:
+    type: RequestInfo
+
+
+"request-not-responded":
+#t=============================
+
+  description: "Runs if no route responded to the request - this should be used only for dev, in prod this route should not be taken"
+
+  settings:
+    runMode: no-value
+    noCloneParams: true
+
+  params:
+    req: IncomingMessage
+    res: ServerResponse
+
+
+"backend-packages-settings":
+#=================================
+
+  settings:
+
+
+"frontend-packages-settings":
+#=================================
+
+  settings:
+
+
+
+"send-response":
+#t==================================
+
+  description: "Adding the msg as pgRes to the resBody and send the message"
+
+  settings:
+    singleHandler: true
+    runMode: no-value
+
+  params:
+    ctx: RequestContext
+    msg: Messsage
+
+
+"before-send-response":
+#t==================================
+
+  description: "Run just before a request is responded. Handlers can modify the response info (status, headers, etc) - Afterwards the response will be sent - Note the field resBody.pgRes is reserved and will be overwritten after running this channel, so changing it will have no effect"
+
+  settings:    
+    
+
+  params:
+    
+
+  value:
+    type: RequestInfo
+  
+    
+"get-request-info":
+#t================================
+
+  settings:
+    singleHandler: true
+    syncType: sync
+
+  params:
+    ctx: RequestContext
+
+  return:
+    type: RequestInfo
+
+
+
+"set-request-info":
+#t================================
+
+  description: "Sets the response info: status, headers and body (merging into the existing data)"
+
+  settings:
+    singleHandler: true
+    syncType: sync
+    runMode: no-value
+
+  params:
+    ctx: RequestContext
+    reqStatus?: number
+    reqHeaders?: GenericObject
+    resStatus?: number
+    resHeaders?: GenericObject
+    resBody?: GenericObject

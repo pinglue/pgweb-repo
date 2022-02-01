@@ -1,0 +1,142 @@
+
+"db-query":
+#======================================
+
+  description: "Quering the main mongodb. Security filters will be applied at the backend. 100% safe."
+
+  settings:
+    singleHandler: true   
+
+  params:
+
+    collection: string
+
+    group?:
+      description: "the group id - used for UI grouping - this field will be reflecetd in all effect channel runs correspond to this channel run"
+      type: string
+
+    query:
+      one:
+        type: boolean
+        description: "find one or many (i.e., result is obj or array)"
+      noTotalCount?: boolean
+      filters?: object
+      projection?: object
+      sort?: object
+      limit?: number
+      skip?: number
+    
+    paginationInfo?:
+      description: "not part of mongodb query - to be used by pagination plugin (if available) to be coverted to mongodb query - if not pagination plugin is installed then this will be ignored"
+
+      type: object
+
+      properties:
+        currentPage: number
+        pageSize: number
+        pageCount: number
+
+
+
+  return:
+    type: Message
+    description: |
+      success if query is accepted (data field contains the response) - error message if error happens - common errors:
+
+      * query format is wrong
+      * db is processing another query for the same group
+
+      in case of success, the format of the message data is (type FindQueryResponse):
+
+      result: array | object (query result)
+      totalCount: 
+      ..
+
+
+"db-query-build":
+#=========================================
+
+  description: "RunA after @db-query to further modify the query. To be handled by individual controllers (mainly filter/sorting pins) to modify the query and add more filters/sorting/etc. Mainly used for collection filters from UI elements"
+
+  settings:
+    
+
+  params:
+    collection: string
+    group?: string
+
+  value:
+    description: "query field of the @db-query channel"
+
+
+"db-query-before-send":
+#=================================
+
+  description: "If this channel returns an object with field 'data' then db-access-pl considers it as the query response and WILL NOT contact the backend - this is oppurtuinity for caching plugins to operate. Pagination plugins can modify the final query at this stage to include pagination info"
+
+  settings:
+    
+
+  params:
+    collection: string
+    group?: string
+
+  value:
+    query: 
+    paginationInfo:
+    data:
+
+"db-response-process":
+#======================================
+
+  description: "Here handlers can modify the query response"
+
+  settings:
+    # already frozen
+    noCloneParams: true
+
+  params:
+    collection:
+    group:
+    paginationInfo:
+    query:
+
+  value:
+    description: "GenericObject the db response (result of query)"
+
+"db-result-item-process":
+#======================================
+
+  description: "Ig query result is an array, this channel will run for each item in the array right after @db-response-process and handlers can furtehr modify each item individually - this could be an easier option to change items in an array result compare to @db-response-process due to limitations of changing array items easily in a merge-object channel"
+
+  settings:
+    # already frozen
+    noCloneParams: true
+
+  params:
+    collection:
+    group:
+    paginationInfo:
+    query:
+
+  value:
+    description: "GenericObject the db result entry"
+
+
+"db-response":
+#======================================
+
+  description: "To be used by the final consumers of the data"
+
+  settings:
+    runMode: no-value
+    # already frozen
+    noCloneParams: true
+
+  params:
+    collection:
+    group:
+    paginationInfo:
+    query:
+    data:
+

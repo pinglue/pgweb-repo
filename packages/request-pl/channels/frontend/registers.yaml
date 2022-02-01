@@ -1,0 +1,12 @@
+
+"send-request":
+#===============================
+
+  settings:
+    singleHandler: true
+
+  params:
+    type: RequestHandlerParams
+
+  return:
+    type: Message

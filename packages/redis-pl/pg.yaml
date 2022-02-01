@@ -1,0 +1,11 @@
+
+id: redis-pl
+
+settings:
+
+  type: object
+
+  properties:
+
+    url:
+      type: string

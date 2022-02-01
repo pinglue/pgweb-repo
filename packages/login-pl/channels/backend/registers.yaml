@@ -1,0 +1,80 @@
+
+"--login":
+#==============================
+
+  description: "run by sub controllers to report the login result (success or failure)"
+
+  settings:
+    singleHandler: true
+    runMode: no-value
+
+  params:
+    ctx: RequestContext
+    userId?: string
+    response: LoginResponse
+
+
+"login-failed":
+#=================================
+
+  description: "returns the final resposne to be sent to the frontend (an instance of LoginErrorResponse)"
+
+  settings:
+
+  params:
+    ctx:
+    userId?: string
+
+  value:
+    type: LoginErrorResponse
+    description: "initially same as params.response of @--login - handlers can add/modify the response"
+
+
+"login-success":
+#=================================
+
+  description: "returns the final resposne to be sent to the frontend (an instance of LoginSuccessResponse)"
+
+  settings:
+
+  params:
+    ctx:
+    userId: string
+
+  value:
+    type: LoginSuccessResponse
+    description: "initially same as params.response of @--login - handlers can add/modify the response"
+
+
+"logged-in":
+#==========================
+
+  description: "To notify handlers that a user is logged in"
+
+  settings:
+    runMode: no-value
+
+  params:
+    ctx:
+
+"logged-out":
+#==========================
+
+  description: "To notify handlers that the current user is logged out"
+
+  settings:
+    runMode: no-value
+
+  params:
+    ctx:
+
+"get-user-id":
+#===========================
+
+  description: "returns user id in original type (ObjectId), or undefined if user is not logged in."
+
+  settings:
+    singleHandler: true
+
+  return:
+    type: "ObjectId | undefined"

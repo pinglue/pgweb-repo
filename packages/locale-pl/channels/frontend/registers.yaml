@@ -1,0 +1,65 @@
+
+"localize-expression":
+#===========================
+
+  description: "TODO - not implemented yet"
+
+  settings:
+    singleHandler: true
+
+  params:
+    expression: string
+
+  return:
+    type: string
+
+
+"localize":
+#============================
+
+  settings:
+    singleHandler: true
+
+  params:
+    functionName: string
+    key: "string | number"
+    params?: object
+
+  return:
+    type: string
+
+
+"locale-changed":
+#============================
+
+  description: "TODO - To notify components that some locale info has changed. The normal reaction should be to re-render"
+
+  settings:
+    runMode: no-value
+
+
+"--lookup-key-local":
+#=============================
+
+  description: "To be used by any subcontroller that wants to lookup a key locally in the frontend - example: static lookup (from factory.js imports), local storage lookup, etc. ATM handled by static-key-lookup-sct - TODO: local storage"
+
+  settings:
+    runMode: chain-breakable
+    reducer: single-pass
+
+  params:
+    domain: string
+    code: string
+    lang: string
+
+  return:
+    type: string?
+
+
+"--lookup-key-remote":
+#===============================
+
+  description: "TODO - As a fallback for $id/--lookup-key-local"
+
+  settings:
+    singleHandler: true

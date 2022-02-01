@@ -1,0 +1,9 @@
+
+"get-redis-client":
+#============================
+
+  settings:
+    singleHandler: true
+
+  return:
+    description: "redis client object"

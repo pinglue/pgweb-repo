@@ -1,0 +1,105 @@
+
+"api-request":
+#===================================
+
+  description: "Run by server-pl when an api request comes - The req info is passed as a value so that it can be further modified within the backend hub. This channel will run @before-api-request to further pre-process the req info and then the request will be handed to the corresponding controller"
+
+  settings:
+    noCloneValue: true
+    singleHandler: true
+    reducer: object-merge
+
+    
+
+  params:
+
+  value:
+    type: RequestInfo
+
+
+"before-api-request":
+#===================================
+
+  description: "Run right after @api-request to modify the req info, in particular its ctx by adding session info"
+
+  settings:
+
+  params:
+
+  value:
+    type: RequestInfo
+
+
+"process-api-req":
+#=================================
+
+  description: "Run by request-pl to notify the controller of its request - it is filtered by controller id so that only the intended controller receives this info"
+
+  settings:
+    runMode: no-value
+
+  
+
+
+"before-frontend-request":
+#===================================
+
+  description: "Run by server-pl to pre-process a frontend by changing its req info"
+
+  settings:
+
+  params:
+
+  value:
+    type: RequestInfo
+
+
+
+"send-response":
+#t==================================
+
+  description: "Proxied to server-pl"
+
+  settings:
+    singleHandler: true
+    runMode: no-value
+
+  params:
+    ctx: RequestContext
+    msg: Messsage
+
+
+
+"get-request-info":
+#t================================
+
+  description: "Proxied to server-pl"
+
+  settings:
+    singleHandler: true
+    syncType: sync
+
+  params:
+    ctx: RequestContext
+
+  return:
+    type: RequestInfo
+
+
+
+"set-request-info":
+#t================================
+
+  description: "Proxied to server-pl"
+
+  settings:
+    singleHandler: true
+    syncType: sync
+    runMode: no-value
+
+  params:
+    ctx: RequestContext
+    status?: number
+    reqHeaders?: GenericObject
+    resHeaders?: GenericObject
+    resBody?: GenericObject

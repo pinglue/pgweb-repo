@@ -1,0 +1,77 @@
+
+"--login":
+#=============================
+
+  description: "Run by sub controller to notify the plugin that a login took place (success or failure)"
+
+  settings:
+    singleHandler: true
+    runMode: no-value
+
+  params:
+    type: LoginResponse
+
+
+"login-up":
+#=============================
+
+  description: "Run this channel to login with username/password"
+
+  settings:
+    singleHandler: true
+
+  params:
+    username: string
+    usernameType: "email | phone | name"
+    password: string
+
+  return:
+    type: LoginResponse
+
+
+"logged-in":
+#=============================
+
+  description: "Run by login-pl to notify that a user is logged in"
+
+  settings:
+    runMode: no-value
+    noCloneParams: true
+
+  params:
+    type: LoginData
+
+
+"logout":
+#==============================
+
+  description: "run this channel to logout"
+
+  settings:
+    singleHandler: true
+    runMode: no-value
+
+  
+"logged-out":
+#===================================
+
+  description: "run by login-pl to notify that a user is logged out"
+
+  settings:
+    runMode: no-value
+
+
+"is-logged-in":
+#===================================
+
+  description: "Whether user is logged in or not - answer come from the cache"
+
+  settings:
+    singleHandler: true
+    syncType: sync
+
+  return:
+    loggedIn: boolean
+    loginData?:
+      type: LoginData
+      description: "exists only if loggedIn=true"

@@ -1,0 +1,39 @@
+
+"get-form-submissions":
+#=================================
+
+  description: "Returns all submissions for a particular form - needs admin permission"
+
+  settings:
+    singleHandler: true
+    inFrontend: true
+    
+
+  params:
+    ctx: RequestContext
+    id: 
+      type: string
+      description: "Form id"
+    skip?: number
+    limit?: 
+      type: number
+      description: "defaults to 50"
+
+  
+"remove-form-submission":
+#===================================
+
+  description: 
+
+  settings:
+    singleHandler: true
+    inFrontend: true
+
+  params:
+    ctx: RequestContext
+    id: 
+      type: string
+      description: "the submission id (not form id!) it is the same id returned by @get-form-submissions"
+
+  return:
+    type: Message

@@ -1,0 +1,38 @@
+
+id: session-pl
+
+settings:
+
+  type: object
+
+  properties:
+
+    secret:
+      type: string
+      default: "123456"
+
+    store:
+      type: string
+      default: redis
+
+    storeKeyPrefix:
+      type: string
+      default: "session"
+
+    # in seconds - no value means infinite
+    sessionMaxAge:
+      type: number
+
+    # in bytes
+    sidLength:
+      type: number
+      default: 24
+
+    cookieName:
+      type: string
+      default: "pg-session"
+
+      
+
+
+

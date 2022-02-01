@@ -1,0 +1,78 @@
+
+"--get-key":
+#==================================
+
+  description: "To get the key value from the store - should be handled by exactly one handler from the sct associated with the session store"
+
+  settings:
+    singleHandler: true
+    noEmpty: true
+
+
+  params:
+    sid:
+      description: "The session id for which we want to lookup the key"
+      type: string
+
+    key: 
+      description: "The key name"
+      type: string
+
+  return:
+    type: string
+
+
+"--set-key":
+#============================
+
+  description: "To set the key value from the store - should be handled by exactly one handler from the sct associated with the session store - value null or undefined will remove the key"
+
+  settings:
+    singleHandler: true
+    noEmpty: true
+
+
+  params:
+    sid:
+      description: "The session id for which we want to lookup the key"
+      type: string
+
+    key: 
+      description: "The key name"
+      type: string
+
+    value:
+      type: string | null
+
+  return:
+    type: Message
+
+
+"--add-session":
+#==============================
+
+  description: "Adds the session with the given sid to the store. Returns false if session cannot be added, mainly due to collision (very unlikely event though) - can be used to create a new session id - In case of success returns true and it means the session is saved into the store as well, so no race condition"
+
+  settings:
+    singleHandler: true
+    noEmpty: true
+
+  params:
+    sid:
+      type: string
+
+  return:
+    type: boolean
+  
+
+"get-session":
+#===============================
+  settings:
+    singleHandler: true
+
+
+"set-session":
+#===============================
+  
+  settings:
+    singleHandler: true

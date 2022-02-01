@@ -1,0 +1,17 @@
+
+id: user-info-pl
+
+settings:
+
+  type: object
+
+  properties:
+
+    # use fields that can be accessed (by user himself or admin)
+    fields:
+      type: array
+      items:
+        type: string
+
+
+

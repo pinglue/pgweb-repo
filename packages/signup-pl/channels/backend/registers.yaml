@@ -1,0 +1,26 @@
+
+"signup-up":
+#=============================
+
+  description: "Run this channel to signup with username/password"
+
+  settings:
+    singleHandler: true
+    inFrontend: true
+
+  params: SignupUpParams    
+
+  return: SignupResponse
+
+"recovery-up":
+#=============================
+
+  description: "Run this channel to resert password for a username"
+
+  settings:
+    singleHandler: true
+    inFrontend: true
+
+  params: RecoveryUpParams    
+
+  return: RecoveryResponse

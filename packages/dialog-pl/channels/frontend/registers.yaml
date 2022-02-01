@@ -1,0 +1,41 @@
+
+"open-modal":
+#===========================
+
+  description: ""
+
+  settings:
+    singleHandler: true
+
+  params:
+    id: string
+    options: ModalOpenOptions
+
+
+"close-modal":
+# ============================
+
+  settings:
+    singleHandler: true
+
+  params:
+    id: string
+    options: ModalCloseOptions
+
+  
+"modal":
+#============================
+
+  description: "updating prop values of the modal with the given id. The modal should be glued to this channel and changes its prop fields (open and options) by the given values. The new values willm erge into the exisitng values, i.e., the absence of field open will not set it to false, but leave it as it is."
+
+  settings:
+    runMode: chain-breakable
+    reducer: single-pass
+
+  params:
+    id: string
+    open: boolean
+    options: ModalOptions
+
+  return:
+    description: "returns the final option of the modal (local options merged with the param.options), which can be used by dialog-pl for its stacking need."
