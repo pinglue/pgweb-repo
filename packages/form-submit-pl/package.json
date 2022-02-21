@@ -20,7 +20,7 @@
     "watch": "./node_modules/.bin/tsc -w",
     "build-ts": "./node_modules/.bin/tsc -b",
     "clean-extras": "rm *.log",
-    "clean-ts": "rm -rf lib; rm tsconfig.tsbuildinfo",    
+    "clean-ts": "rm -rf lib; rm tsconfig.tsbuildinfo",
     "clean-node": "rm -rf node_modules",
     "clean-all": "npm run clean-extras; npm run clean-ts; npm run clean-node",
     "lint": "./node_modules/.bin/eslint 'src/**/*.ts'",
@@ -29,8 +29,8 @@
   "dependencies": {
     "@pgweb/utils": "^0.0.0",
     "@pinglue/utils": "^0.0.0",
-    "pinglue": "^0.0.0",
-    "mongodb": "^4.1.0"
+    "mongodb": "^4.1.0",
+    "pinglue": "^0.0.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.28.5",
@@ -38,6 +38,6 @@
     "eslint": "^7.31.0",
     "jest": "^27.0.6",
     "typedoc": "^0.21.4",
-    "typescript": "4.3.5"
+    "typescript": "4.5.5"
   }
 }
